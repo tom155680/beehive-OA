@@ -7,6 +7,7 @@ import com.wyj.beehive.common.Result;
 import com.wyj.beehive.common.exception.BeehiveException;
 import com.wyj.beehive.model.system.SysRole;
 import com.wyj.beehive.service.SysRoleService;
+import com.wyj.beehive.vo.system.AssginRoleVo;
 import com.wyj.beehive.vo.system.SysRoleQueryVo;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -14,6 +15,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author yongjianWang
@@ -26,6 +28,20 @@ public class SysRoleController {
 
     @Autowired
     private SysRoleService sysRoleService;
+
+    @ApiOperation("根据用户id获取角色")
+    @GetMapping("/toAssign/{id}")
+    public Result assign(@PathVariable("id") Long userId){
+        Map<String,Object> map = sysRoleService.findRoleListByUserId(userId);
+        return Result.ok(map);
+    }
+
+    @ApiOperation("分配角色")
+    @PostMapping("doAssign")
+    public Result doAssign(@RequestBody AssginRoleVo assginRoleVo){
+        sysRoleService.doAssign(assginRoleVo);
+        return Result.ok();
+    }
 
     @ApiOperation(value = "获取全部角色")
     @RequestMapping(value = "/findAll",method = RequestMethod.GET)
@@ -101,4 +117,6 @@ public class SysRoleController {
             return Result.fail();
         }
     }
+
+
 }

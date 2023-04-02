@@ -1,7 +1,8 @@
 package com.wyj.beehive.service.impl;
 
-import com.wyj.beehive.entity.SysUser;
+
 import com.wyj.beehive.mapper.SysUserMapper;
+import com.wyj.beehive.model.system.SysUser;
 import com.wyj.beehive.service.SysUserService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;

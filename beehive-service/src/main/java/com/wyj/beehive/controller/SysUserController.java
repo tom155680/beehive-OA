@@ -2,11 +2,10 @@ package com.wyj.beehive.controller;
 
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
-import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.mysql.cj.util.StringUtils;
 import com.wyj.beehive.common.Result;
-import com.wyj.beehive.entity.SysUser;
+import com.wyj.beehive.model.system.SysUser;
 import com.wyj.beehive.service.SysUserService;
 import com.wyj.beehive.vo.system.SysUserQueryVo;
 import io.swagger.annotations.Api;
@@ -83,5 +82,16 @@ public class SysUserController {
         service.removeById(id);
         return Result.ok();
     }
+
+    @ApiOperation("更新用户状态")
+    @GetMapping("updateStatus/{id}/{status}")
+    public Result updateStatus(@PathVariable("id") Long id,@PathVariable("status") Integer status){
+        SysUser user = service.getById(id);
+
+        user.setStatus(status);
+        this.updateById(user);
+        return Result.ok();
+    }
+
 }
 
