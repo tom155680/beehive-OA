@@ -3,6 +3,7 @@ server:
 mybatis-plus:
   configuration:
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl # 查看日志
+  mapper-locations: classpath:com/wyj/beehive/mapper/xml/*.xml
 spring:
   datasource:
     type: com.zaxxer.hikari.HikariDataSource
@@ -16,3 +17,6 @@ spring:
   jackson:
     date-format: yyyy-MM-dd HH:mm:ss
     time-zone: GMT+8
+  main:
+    allow-bean-definition-overriding: true
+    allow-circular-references: true

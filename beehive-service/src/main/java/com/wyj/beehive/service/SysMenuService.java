@@ -4,6 +4,7 @@ package com.wyj.beehive.service;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.wyj.beehive.model.system.SysMenu;
 import com.wyj.beehive.vo.system.AssginMenuVo;
+import com.wyj.beehive.vo.system.RouterVo;
 
 import java.util.List;
 
@@ -24,4 +25,10 @@ public interface SysMenuService extends IService<SysMenu> {
     List<SysMenu> findSysMenuByRoleId(Long roleId);
 
     void doAssign(AssginMenuVo assignMenuVo);
+
+
+
+    List<RouterVo> findMenuListByUserId(Long userId);
+
+    List<String> findUserPermsByUserId(Long userId);
 }

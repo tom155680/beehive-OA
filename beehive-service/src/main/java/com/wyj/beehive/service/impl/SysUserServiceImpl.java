@@ -1,6 +1,7 @@
 package com.wyj.beehive.service.impl;
 
 
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.wyj.beehive.mapper.SysUserMapper;
 import com.wyj.beehive.model.system.SysUser;
 import com.wyj.beehive.service.SysUserService;
@@ -18,4 +19,11 @@ import org.springframework.stereotype.Service;
 @Service
 public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUser> implements SysUserService {
 
+
+    @Override
+    public SysUser getByUserName(String username) {
+        LambdaQueryWrapper<SysUser> wrapper = new LambdaQueryWrapper<>();
+        wrapper.eq(SysUser::getUsername,username);
+        return baseMapper.selectOne(wrapper);
+    }
 }

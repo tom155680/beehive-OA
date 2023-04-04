@@ -4,6 +4,7 @@ package com.wyj.beehive.controller;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.mysql.cj.util.StringUtils;
+import com.wyj.beehive.common.MD5;
 import com.wyj.beehive.common.Result;
 import com.wyj.beehive.model.system.SysUser;
 import com.wyj.beehive.service.SysUserService;
@@ -65,6 +66,9 @@ public class SysUserController {
     @ApiOperation(value = "保存用户")
     @PostMapping("save")
     public Result save(@RequestBody SysUser user) {
+        //对密码进行加密处理
+        String encryptPwd = MD5.encrypt(user.getPassword());
+        user.setPassword(encryptPwd);
         service.save(user);
         return Result.ok();
     }
