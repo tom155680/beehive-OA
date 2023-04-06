@@ -1,5 +1,6 @@
 package com.wyj.beehive.service;
 
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.wyj.beehive.model.process.ProcessTemplate;
 
@@ -13,4 +14,7 @@ import com.wyj.beehive.model.process.ProcessTemplate;
  */
 public interface OaProcessTemplateService extends IService<ProcessTemplate> {
 
+    Page<ProcessTemplate> selectPage(Page<ProcessTemplate> pageParam);
+
+    void publish(Long id);
 }

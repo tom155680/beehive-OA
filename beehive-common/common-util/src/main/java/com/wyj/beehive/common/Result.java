@@ -34,6 +34,19 @@ public class Result<T> {
         return result;
     }
 
+    public static<T> Result<T> build(T body,ResultCodeEnum resultCodeEnum,String ex){
+
+        Result<T> result = new Result<>();
+
+        if (body!=null){
+            result.setData(body);
+        }
+        result.setCode(resultCodeEnum.getCode());
+        result.setMessage(resultCodeEnum.getMessage());
+        System.out.println(ex);
+        return result;
+    }
+
     public static<T> Result<T> ok(){
         return build(null,ResultCodeEnum.SUCCESS);
     }

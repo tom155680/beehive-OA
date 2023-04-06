@@ -15,4 +15,6 @@ import com.wyj.beehive.model.system.SysUser;
 public interface SysUserService extends IService<SysUser> {
 
     SysUser getByUserName(String username);
+
+    Object getCurrentUser();
 }

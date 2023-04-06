@@ -1,4 +1,4 @@
-package com.atguigu.vo.system;
+package com.wyj.beehive.vo.system;
 
 import com.wyj.beehive.vo.system.MetaVo;
 import lombok.Data;
